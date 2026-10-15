@@ -1,0 +1,50 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 0 -20px;
+  padding: 0 20px;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  @include up(lg) {
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.tab {
+  @include reset-button;
+  flex-shrink: 0;
+  padding: 10px 16px 12px;
+  border-bottom: 2px solid transparent;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+  white-space: nowrap;
+
+  @include up(lg) {
+    padding: 10px 32px 12px;
+  }
+
+  &:hover {
+    color: $color-secondary;
+  }
+
+  &:focus-visible {
+    outline: none;
+    box-shadow: inset $focus-ring;
+    border-radius: $radius-sm $radius-sm 0 0;
+  }
+
+  &[aria-selected='true'] {
+    border-bottom-color: $color-secondary;
+    color: $color-secondary;
+  }
+}

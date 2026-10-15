@@ -1,0 +1,109 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.button {
+  @include reset-button;
+  @include focus-visible;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 24px;
+  border-radius: $radius-md;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    opacity 0.15s ease;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+.md {
+  height: 40px;
+}
+
+.lg {
+  height: 48px;
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: $color-secondary;
+  color: #fff;
+
+  &:hover:not(:disabled) {
+    background: $color-secondary-dark;
+  }
+}
+
+.outline {
+  border: 1px solid $color-text;
+  color: $color-text;
+  background: transparent;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-text, 0.06);
+  }
+}
+
+// Uppercase, letter-spaced outlined buttons on the User details header.
+%header-outline {
+  border: 1px solid currentColor;
+  background: transparent;
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0 16px;
+}
+
+.danger-outline {
+  @extend %header-outline;
+  color: $color-danger;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-danger, 0.06);
+  }
+}
+
+.secondary-outline {
+  @extend %header-outline;
+  color: $color-secondary;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-secondary, 0.08);
+  }
+}
+
+.ghost {
+  color: $color-primary;
+  padding: 0 12px;
+
+  &:hover:not(:disabled) {
+    background: rgba($color-primary, 0.06);
+  }
+}
+
+.spinner {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+.labelLoading {
+  visibility: hidden;
+}

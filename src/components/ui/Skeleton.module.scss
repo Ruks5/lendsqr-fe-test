@@ -1,0 +1,6 @@
+@use '@/styles/mixins' as *;
+
+.skeleton {
+  display: block;
+  @include skeleton;
+}

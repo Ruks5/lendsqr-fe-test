@@ -1,0 +1,166 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+// ≥ md: a real table that scrolls horizontally inside its card when the
+// viewport is too narrow for seven columns.
+// < md: each row becomes a stacked card, labelled via data-label.
+
+.scroller {
+  @include up(md) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  color: $color-text;
+
+  @include up(md) {
+    min-width: 880px;
+  }
+
+  th {
+    padding: 0 8px 12px;
+    text-align: left;
+    white-space: nowrap;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: $color-text;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  td {
+    height: 61px;
+    padding: 0 8px;
+    border-bottom: 1px solid $color-row-divider;
+    white-space: nowrap;
+
+    &:first-child {
+      padding-left: 0;
+    }
+  }
+
+  tbody tr:last-child td {
+    border-bottom: 0;
+  }
+
+  @include down(md) {
+    thead {
+      @include visually-hidden;
+    }
+
+    tbody,
+    tr,
+    td {
+      display: block;
+    }
+
+    tr:not(.fallbackRow) {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 10px 12px;
+      position: relative;
+      padding: 16px 0;
+      border-bottom: 1px solid $color-row-divider;
+    }
+
+    tbody tr:last-child {
+      border-bottom: 0;
+    }
+
+    td,
+    td:first-child {
+      height: auto;
+      padding: 0;
+      border: 0;
+      white-space: normal;
+      overflow-wrap: anywhere;
+    }
+
+    td[data-label] {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 110px minmax(0, 1fr);
+      gap: 12px;
+      align-items: center;
+      justify-items: start;
+
+      &::before {
+        content: attr(data-label);
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        color: $color-text-muted;
+      }
+    }
+
+    .actionsCell {
+      position: absolute;
+      top: 10px;
+      right: -6px;
+    }
+
+    .skeletonRow td {
+      grid-column: 1 / -1;
+    }
+  }
+}
+
+.th {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filterButton {
+  @include reset-button;
+  @include focus-visible;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: $radius-sm;
+  color: $color-text;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    color: $color-secondary;
+  }
+}
+
+.truncate {
+  @include up(md) {
+    max-width: 170px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.userLink {
+  color: inherit;
+  text-decoration: none;
+  border-radius: 2px;
+
+  &:hover {
+    color: $color-primary;
+    text-decoration: underline;
+  }
+}
+
+.actionsCell {
+  width: 40px;
+  text-align: right;
+}
+
+.fallbackRow td {
+  height: auto;
+  border: 0;
+  white-space: normal;
+}

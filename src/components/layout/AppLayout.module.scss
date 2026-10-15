@@ -1,0 +1,54 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.main {
+  min-height: calc(100vh - #{$header-height-mobile});
+  padding: 24px 16px 48px;
+  outline: none;
+
+  @include up(md) {
+    padding: 40px 32px 64px;
+  }
+
+  @include up(lg) {
+    min-height: calc(100vh - #{$header-height});
+    margin-left: $sidebar-width;
+    padding: 60px $content-padding 80px;
+  }
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: $z-overlay;
+  background: rgba($color-primary, 0.35);
+
+  @include up(lg) {
+    display: none;
+  }
+}
+
+.noScroll {
+  overflow: hidden;
+
+  @include up(lg) {
+    overflow: auto;
+  }
+}
+
+.skipLink {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: $z-toast;
+  padding: 10px 16px;
+  border-radius: $radius-md;
+  background: $color-primary;
+  color: #fff;
+  font-weight: 600;
+  transform: translateY(-200%);
+
+  &:focus {
+    transform: none;
+  }
+}

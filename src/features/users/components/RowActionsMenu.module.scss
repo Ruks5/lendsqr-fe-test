@@ -1,0 +1,55 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.trigger {
+  @include reset-button;
+  @include focus-visible;
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  color: $color-text;
+
+  &:hover,
+  &[aria-expanded='true'] {
+    background: rgba($color-primary, 0.06);
+    color: $color-primary;
+  }
+}
+
+.menu {
+  position: fixed;
+  z-index: $z-popover;
+  margin: 0;
+  padding: 10px 8px;
+  list-style: none;
+  @include card;
+  box-shadow: $shadow-popover;
+}
+
+.item {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: $radius-sm;
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+  text-align: left;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    background: rgba($color-secondary, 0.1);
+    color: $color-primary;
+  }
+
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.45;
+  }
+}

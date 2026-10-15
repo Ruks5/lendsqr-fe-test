@@ -1,0 +1,80 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 24px 0;
+  border-bottom: 1px solid rgba($color-primary, 0.1);
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  @include up(lg) {
+    padding: 30px 0;
+  }
+}
+
+.title {
+  margin-bottom: 24px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-primary;
+
+  @include up(lg) {
+    margin-bottom: 30px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px 20px;
+  margin: 0;
+
+  @include up(md) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    row-gap: 30px;
+  }
+
+  & + & {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba($color-primary, 0.1);
+  }
+}
+
+.cols5 {
+  @include up(xl) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+}
+
+.cols4 {
+  @include up(xl) {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.item {
+  min-width: 0;
+
+  dt {
+    margin-bottom: 8px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $color-text;
+  }
+
+  dd {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: $color-text;
+    overflow-wrap: anywhere;
+  }
+}

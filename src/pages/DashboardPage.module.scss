@@ -1,0 +1,169 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  margin-bottom: 24px;
+
+  @include up(lg) {
+    margin-bottom: 40px;
+  }
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 500;
+  color: $color-primary;
+}
+
+.greeting {
+  margin-top: 8px;
+  font-size: 16px;
+}
+
+.grid {
+  display: grid;
+  gap: 20px;
+
+  @include up(xl) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 26px;
+  }
+}
+
+.wide {
+  @include up(xl) {
+    grid-column: 1 / -1;
+  }
+}
+
+.card {
+  @include card;
+  padding: 20px;
+
+  @include up(md) {
+    padding: 30px;
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.cardTitle {
+  margin-bottom: 20px;
+  font-size: 16px;
+  font-weight: 500;
+  color: $color-primary;
+}
+
+.viewAll {
+  border-radius: $radius-sm;
+  color: $color-secondary-dark;
+  font-weight: 600;
+}
+
+.bars,
+.recent {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.barRow {
+  display: grid;
+  grid-template-columns: 110px minmax(0, 1fr) 90px;
+  align-items: center;
+  gap: 12px;
+  min-height: 44px;
+  padding: 4px 8px;
+  margin: 0 -8px;
+  border-radius: $radius-sm;
+  color: $color-text;
+  text-decoration: none;
+
+  &:hover {
+    background: rgba($color-primary, 0.03);
+
+    .barFill {
+      background: $color-primary;
+    }
+  }
+}
+
+.barLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.barTrack {
+  height: 8px;
+  border-radius: 4px;
+  background: rgba($color-primary, 0.06);
+  overflow: hidden;
+}
+
+.barFill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: $color-secondary;
+  transition: background-color 0.15s ease;
+}
+
+.barValue {
+  font-weight: 500;
+  color: $color-primary;
+  text-align: right;
+  white-space: nowrap;
+
+  span {
+    font-weight: 400;
+    color: $color-text-muted;
+  }
+}
+
+.recent li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid $color-row-divider;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.recentLink {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  border-radius: $radius-sm;
+  text-decoration: none;
+
+  &:hover .recentName {
+    text-decoration: underline;
+  }
+}
+
+.recentName {
+  font-weight: 500;
+  color: $color-primary;
+}
+
+.recentMeta {
+  font-size: 13px;
+  color: $color-text-muted;
+}
+
+.skeletonList {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}

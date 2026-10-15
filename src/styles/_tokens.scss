@@ -1,0 +1,73 @@
+// Design tokens taken from the Figma frames. Every component module pulls
+// these in with `@use '@/styles/tokens' as *;` so values live in one place.
+
+// Colours
+$color-primary: #213f7d;
+$color-secondary: #39cdcc;
+$color-secondary-dark: #2bb1b0;
+$color-text: #545f7d;
+$color-text-muted: #8a93ab;
+$color-bg: #fbfbfb;
+$color-surface: #ffffff;
+$color-border: rgba(84, 95, 125, 0.15);
+$color-border-soft: rgba(33, 63, 125, 0.06);
+$color-row-divider: rgba(33, 63, 125, 0.1);
+$color-active-nav: rgba(57, 205, 204, 0.06);
+$color-danger: #e4033b;
+$color-success: #39cd62;
+$color-warning: #e9b200;
+$color-star: #e9b200;
+
+$status-colors: (
+  active: (
+    $color-success,
+    rgba(57, 205, 98, 0.06),
+  ),
+  pending: (
+    $color-warning,
+    rgba(233, 178, 0, 0.1),
+  ),
+  blacklisted: (
+    $color-danger,
+    rgba(228, 3, 59, 0.1),
+  ),
+  inactive: (
+    $color-text,
+    rgba(84, 95, 125, 0.06),
+  ),
+);
+
+// Typography
+$font-family:
+  'Work Sans',
+  system-ui,
+  -apple-system,
+  'Segoe UI',
+  sans-serif;
+$font-family-display: 'Avenir Next', 'Avenir', 'Work Sans', system-ui, sans-serif;
+
+// Layout
+$header-height: 100px;
+$header-height-mobile: 72px;
+$sidebar-width: 283px;
+$content-padding: 60px;
+$radius-sm: 4px;
+$radius-md: 8px;
+$shadow-card: 3px 5px 20px rgba(0, 0, 0, 0.04);
+$shadow-popover: 0 5px 20px rgba(0, 0, 0, 0.08);
+$focus-ring: 0 0 0 3px rgba(57, 205, 204, 0.45);
+
+// Breakpoints (min-width)
+$breakpoints: (
+  sm: 480px,
+  md: 768px,
+  lg: 1024px,
+  xl: 1280px,
+);
+
+// Layers
+$z-sidebar: 30;
+$z-header: 40;
+$z-overlay: 50;
+$z-popover: 60;
+$z-toast: 70;

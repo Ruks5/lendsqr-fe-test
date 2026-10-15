@@ -1,0 +1,55 @@
+@use 'sass:color';
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: $z-popover + 5;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba($color-primary, 0.4);
+  animation: fade-in 0.15s ease-out;
+}
+
+.dialog {
+  width: 100%;
+  max-width: 440px;
+  padding: 28px;
+  @include card;
+  border-radius: $radius-md;
+  box-shadow: $shadow-popover;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.description {
+  margin-top: 12px;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.danger {
+  background: $color-danger;
+
+  &:hover:not(:disabled) {
+    background: color.adjust($color-danger, $lightness: -6%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}

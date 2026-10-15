@@ -1,0 +1,46 @@
+@use '@/styles/tokens' as *;
+
+.state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 64px 24px;
+  text-align: center;
+}
+
+.compact {
+  padding: 32px 16px;
+}
+
+.icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin-bottom: 8px;
+  border-radius: 50%;
+  background: rgba($color-primary, 0.06);
+  color: $color-primary;
+}
+
+.error .icon {
+  background: rgba($color-danger, 0.08);
+  color: $color-danger;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  color: $color-primary;
+}
+
+.description {
+  max-width: 420px;
+  color: $color-text;
+}
+
+.action {
+  margin-top: 12px;
+}

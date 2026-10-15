@@ -1,0 +1,144 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  display: grid;
+  min-height: 100vh;
+  background: $color-surface;
+  font-family: $font-family-display;
+
+  @include up(md) {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.visual {
+  display: none;
+
+  @include up(md) {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 48px 48px;
+    background: $color-surface;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.02);
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 106px;
+  left: clamp(32px, 7vw, 97px);
+  width: auto;
+  height: 28px;
+
+  @include up(lg) {
+    height: 36px;
+  }
+}
+
+.illustration {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+}
+
+.formPanel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px 24px 48px;
+
+  @include up(md) {
+    padding: 48px clamp(32px, 6vw, 100px);
+  }
+}
+
+.mobileLogo {
+  align-self: flex-start;
+  width: auto;
+  height: 28px;
+  margin-bottom: 64px;
+
+  @include up(md) {
+    display: none;
+  }
+}
+
+.formWrap {
+  width: 100%;
+  max-width: 447px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: $color-primary;
+
+  @include up(lg) {
+    font-size: 40px;
+  }
+}
+
+.subtitle {
+  margin-top: 10px;
+  font-size: 18px;
+  color: $color-text;
+
+  @include up(lg) {
+    font-size: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 48px;
+
+  @include up(lg) {
+    margin-top: 60px;
+  }
+
+  input {
+    font-family: $font-family-display;
+  }
+}
+
+.formError {
+  padding: 12px 14px;
+  border-radius: $radius-sm;
+  background: rgba($color-danger, 0.08);
+  color: $color-danger;
+}
+
+.toggle,
+.forgot {
+  @include reset-button;
+  @include focus-visible;
+  border-radius: $radius-sm;
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.forgot {
+  align-self: flex-start;
+  margin-top: 0;
+}
+
+.resetHint {
+  margin-top: -12px;
+  font-size: 13px;
+  color: $color-text;
+}
+
+.submit {
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

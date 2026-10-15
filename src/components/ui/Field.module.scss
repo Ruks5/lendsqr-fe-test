@@ -1,0 +1,106 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 500;
+  color: $color-text;
+}
+
+.control {
+  position: relative;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba($color-primary, 0.2);
+  border-radius: $radius-md;
+  background: $color-surface;
+  transition:
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:focus-within {
+    border-color: $color-secondary;
+    box-shadow: $focus-ring;
+  }
+}
+
+.md {
+  height: 40px;
+}
+
+// Login inputs are taller with a heavier border in the design.
+.lg {
+  height: 50px;
+  border: 2px solid $color-border;
+  border-radius: 5px;
+
+  .input {
+    padding: 0 18px;
+  }
+}
+
+.invalid {
+  border-color: $color-danger;
+
+  &:focus-within {
+    border-color: $color-danger;
+    box-shadow: 0 0 0 3px rgba($color-danger, 0.2);
+  }
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  padding: 0 14px;
+  border: 0;
+  background: transparent;
+  color: $color-text;
+  font-size: 14px;
+  outline: none;
+
+  &::placeholder {
+    color: rgba($color-text, 0.7);
+  }
+
+  // Native calendar icon is replaced by our own trailing icon.
+  &[type='date'] {
+    min-height: 100%;
+    color: $color-text;
+  }
+}
+
+.select {
+  appearance: none;
+  padding-right: 36px;
+  cursor: pointer;
+}
+
+.chevron {
+  position: absolute;
+  right: 14px;
+  pointer-events: none;
+  color: $color-text;
+}
+
+.trailing {
+  display: flex;
+  align-items: center;
+  padding-right: 16px;
+}
+
+.hint {
+  font-size: 12px;
+  color: $color-text-muted;
+}
+
+.error {
+  font-size: 12px;
+  color: $color-danger;
+}

@@ -1,0 +1,241 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $z-header;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  height: $header-height-mobile;
+  padding: 0 16px;
+  background: $color-surface;
+  box-shadow: 3px 0 20px rgba(0, 0, 0, 0.04);
+
+  @include up(lg) {
+    height: $header-height;
+    padding: 0 60px 0 30px;
+    gap: 0;
+  }
+}
+
+.menuToggle {
+  @include reset-button;
+  @include focus-visible;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: $radius-md;
+  color: $color-primary;
+
+  @include up(lg) {
+    display: none;
+  }
+}
+
+.logo {
+  display: inline-flex;
+  flex-shrink: 0;
+  border-radius: $radius-sm;
+
+  img {
+    height: 24px;
+    width: auto;
+
+    @include up(lg) {
+      height: 30px;
+    }
+  }
+}
+
+.search {
+  display: none;
+
+  @include up(md) {
+    display: flex;
+    margin-left: auto;
+    width: min(400px, 40vw);
+  }
+
+  @include up(lg) {
+    margin-left: clamp(32px, 11vw, 170px);
+  }
+}
+
+.searchForm {
+  height: 40px;
+  border: 1px solid rgba($color-text, 0.2);
+  border-radius: $radius-md;
+  overflow: hidden;
+  background: $color-surface;
+
+  &:focus-within {
+    border-color: $color-secondary;
+    box-shadow: $focus-ring;
+  }
+
+  input {
+    flex: 1;
+    min-width: 0;
+    padding: 0 20px;
+    border: 0;
+    outline: none;
+    font-size: 14px;
+    color: $color-text;
+    background: transparent;
+
+    &::placeholder {
+      color: rgba($color-text, 0.8);
+    }
+
+    &::-webkit-search-cancel-button {
+      cursor: pointer;
+    }
+  }
+
+  button {
+    @include reset-button;
+    display: grid;
+    place-items: center;
+    width: 56px;
+    background: $color-secondary;
+    color: #fff;
+
+    &:hover {
+      background: $color-secondary-dark;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $color-primary;
+      outline-offset: -4px;
+    }
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+
+  @include up(lg) {
+    gap: 0;
+  }
+}
+
+.docs {
+  display: none;
+  color: $color-primary;
+  font-size: 16px;
+  text-decoration: underline;
+  border-radius: $radius-sm;
+
+  @include up(md) {
+    display: inline;
+    margin-right: 24px;
+  }
+
+  @include up(lg) {
+    margin-right: 46px;
+  }
+}
+
+.iconButton {
+  @include reset-button;
+  @include focus-visible;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: $color-primary;
+
+  @include up(lg) {
+    margin-right: 30px;
+  }
+
+  &:hover {
+    background: rgba($color-primary, 0.05);
+  }
+}
+
+.profile {
+  position: relative;
+}
+
+.profileButton {
+  @include reset-button;
+  @include focus-visible;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px;
+  border-radius: 100px;
+  color: $color-primary;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  @include up(lg) {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.name {
+  display: none;
+
+  @include up(sm) {
+    display: inline;
+  }
+}
+
+.menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: $z-popover;
+  min-width: 220px;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  @include card;
+  box-shadow: $shadow-popover;
+}
+
+.menuEmail {
+  padding: 8px 12px 12px;
+  border-bottom: 1px solid $color-row-divider;
+  margin-bottom: 4px;
+  font-size: 12px;
+  color: $color-text-muted;
+  overflow-wrap: anywhere;
+}
+
+.menuItem {
+  @include reset-button;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-size: 14px;
+  font-weight: 500;
+
+  &:hover,
+  &:focus-visible {
+    outline: none;
+    background: rgba($color-secondary, 0.1);
+    color: $color-primary;
+  }
+}

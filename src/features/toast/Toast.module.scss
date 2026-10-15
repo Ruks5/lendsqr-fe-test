@@ -1,0 +1,69 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.region {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  left: 16px;
+  z-index: $z-toast;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  pointer-events: none;
+
+  @include up(md) {
+    left: auto;
+    right: 24px;
+    bottom: 24px;
+  }
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 380px;
+  padding: 12px 14px;
+  border-radius: $radius-md;
+  background: $color-primary;
+  color: #fff;
+  box-shadow: $shadow-popover;
+  pointer-events: auto;
+  animation: toast-in 0.2s ease-out;
+
+  span {
+    flex: 1;
+  }
+}
+
+.success svg:first-child {
+  color: $color-secondary;
+}
+
+.error {
+  background: #7a0c27;
+}
+
+.close {
+  @include reset-button;
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+@keyframes toast-in {
+  from {
+    transform: translateY(8px);
+    opacity: 0;
+  }
+}

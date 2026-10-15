@@ -1,0 +1,44 @@
+@use '@/styles/tokens' as *;
+@use '@/styles/mixins' as *;
+
+.panel {
+  position: absolute;
+  top: 60px;
+  left: 12px;
+  right: 12px;
+  z-index: $z-popover;
+  padding: 24px 20px;
+  @include card;
+  box-shadow: $shadow-popover;
+
+  @include up(sm) {
+    right: auto;
+    width: 270px;
+  }
+
+  @include up(md) {
+    top: 80px;
+    left: 20px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  label {
+    font-size: 14px;
+  }
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 10px;
+
+  button {
+    padding: 0 12px;
+  }
+}
